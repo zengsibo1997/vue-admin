@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/css/global.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import mybread from '../src/components/home/mybread'
 
+Vue.component('my-bread',mybread)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

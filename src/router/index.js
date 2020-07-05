@@ -5,7 +5,7 @@ const Login = () => import('../components/Login.vue')
 const Home = () => import('../components/home/Home.vue')
 const Welcome = () => import('../components/home/Welcome.vue')
 
-const Users = () => import('../components/users/Users.vue')
+const Users = () => import('../components/users/users.vue')
 const Rights = () => import('../components/power/Rights.vue')
 const Roles = () => import('../components/power/Roles.vue')
 
@@ -55,5 +55,11 @@ router.beforeEach((to, from, next) => {
   if (!tokenStr) return next('/login')
   next()
 })
+
+const resolveOriginal = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return resolveOriginal.call(this, location).catch(err => err)
+}
+
 
 export default router
